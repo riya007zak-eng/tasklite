@@ -71,10 +71,21 @@ def remove_task(index):
 
 def sort_by_priority(tasks):
     """Sort tasks so 'high' priority tasks come first, then 'normal', then 'low'.
+    
 
     TODO(enhancement): not implemented yet. Currently returns tasks
     unsorted. Should also be wired up behind a `list --sort` flag.
     """
+    priority_order = {
+        "high": 0,
+        "normal": 1,
+        "low": 2,
+    }
+
+    return sorted(
+        tasks,
+        key=lambda task: priority_order.get(task["priority"], 1)
+    )
     return tasks
 
 
